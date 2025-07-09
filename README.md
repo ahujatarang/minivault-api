@@ -35,9 +35,17 @@ minivault-api/
 │   ├── logger.py          # Logging utility
 │   └── cli.py             # Command-line interface
 ├── logs/
-│   └── log.jsonl          # Auto-created, stores prompt/response logs
+│   └── gitkeep # Placeholder (log.jsonl auto-created at runtime)
 ├── requirements.txt       # Dependencies
-└── README.md              
+└── README.md
+
+**Note**: The `logs/log.jsonl` file will be automatically generated when you first run the API. 
+- Contains all prompt/response pairs in JSONL format
+- Created with proper permissions during runtime
+- Sample entry format:
+   ```json
+   {"timestamp":"2023-07-16T12:00:00", "prompt":"Hello", "response":"Hello! Welcome to ModelVault's API simulation. How can I assist you today?"}
+      
 ```
 ---
 
