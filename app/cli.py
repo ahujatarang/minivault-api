@@ -13,13 +13,13 @@ def call_generate():
     print(res.json()["response"])
 
 def call_stream():
-    """Sends a GET request to /stream-generate and prints tokens as they stream in."""
+    """Sends a POST request to /stream-generate and prints tokens as they stream in."""
     prompt = input("Enter a prompt: ")
     print("\nStreaming response:\n")
 
-    with requests.get(
+    with requests.post(
         "http://127.0.0.1:8000/stream-generate",
-        params={"prompt": prompt},
+        json={"prompt": prompt},
         stream=True,
     ) as res:
         for line in res.iter_lines(decode_unicode=True):
@@ -27,7 +27,7 @@ def call_stream():
             if line.startswith("data:"):
                 token = line[len("data:"):].strip()
                 if token:
-                    print(token, flush=True)
+                    print(token, flush=True, end=" ")
 
 if __name__ == "__main__":
     print("Choose mode:")
