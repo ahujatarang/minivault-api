@@ -1,6 +1,6 @@
 # MiniVault API
 
-A lightweight local REST API that simulates a core feature of ModelVault: receiving a prompt and returning a generated response using a local LLM.
+A lightweight local REST API that simulates ModelVault's core feature: receiving prompts and returning generated responses using a local LLM.
 
 ---
 
