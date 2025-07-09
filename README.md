@@ -72,7 +72,7 @@ minivault-api/
 
 Uses distilgpt2 model from HuggingFace.
 
-All runs are offline — no external APIs used.
+All runs are offline — no cloud APIs used.
 
 Designed to be fast, readable, and minimal.
 
