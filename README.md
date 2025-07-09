@@ -78,7 +78,7 @@ Designed to be fast, readable, and minimal.
 
 ---
 
-## Future Improvements
+## 🧪 Future Improvements
 
 Add more models using Ollama or ggml.
 
