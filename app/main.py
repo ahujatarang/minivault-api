@@ -10,7 +10,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from sse_starlette.sse import EventSourceResponse
 from model import generate_response, stream_response
-from utils import log_interaction
+from logger import log_interaction
 
 app = FastAPI()
 
