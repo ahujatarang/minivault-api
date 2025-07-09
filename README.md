@@ -7,22 +7,21 @@ A lightweight local REST API that simulates a core feature of ModelVault: receiv
 ## 🚀 Features
 
 - POST `/generate` — Generate a full response
-- GET `/stream-generate` — Stream token-by-token response
+- POST `/stream-generate` — Stream token-by-token response
 - All interactions are logged in `logs/log.jsonl`
-- CLI tool included for easy testing
+- CLI tool for easy testing
 
 ---
 
 ## 🧠 Technologies Used
 
-- Python
-- FastAPI: for building the REST API
-- Uvicorn: ASGI server for running the FastAPI app
-- sse-starlette: to implement Server-Sent Events (SSE) for token streaming
-- Hugging Face Transformers: to load and use the distilgpt2 model locally
-- PyTorch: backend framework for the language model
-- Requests: for making HTTP requests in the CLI tool
-- Standard Python modules: json, datetime, os, asyncio, pathlib
+- Python 3.9
+- FastAPI: REST API framework
+- Uvicorn: ASGI server
+- Hugging Face Transformers: DistilGPT2 model
+- PyTorch: Model backend
+- sse-starlette: Server-Sent Events
+- Requests: CLI HTTP client
 
 ---
 
@@ -32,39 +31,69 @@ A lightweight local REST API that simulates a core feature of ModelVault: receiv
 minivault-api/
 ├── app/
 │   ├── main.py            # FastAPI endpoints (generate + stream)
-│   ├── model.py           # Model loading and response generation
+│   ├── model.py           # LLM interactions
 │   ├── logger.py          # Logging utility
-│   └── cli.py             # CLI tool to test endpoints
+│   └── cli.py             # Command-line interface
 ├── logs/
 │   └── log.jsonl          # Auto-created, stores prompt/response logs
-├── requirements.txt       # Python dependencies
-└── README.md              # Project instructions (this file)
+├── requirements.txt       # Dependencies
+└── README.md              
 ```
 ---
 
 ## 🏁 Setup Instructions
 
-1. **Clone the repo** and navigate into the folder:
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/your-username/minivault-api.git
    cd minivault-api
 
-8. Create a virtual environment (optional but recommended):
+2. **Create virtual environment**:
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-7. Install dependencies:
+3. **Install dependencies**:
    ```bash
    pip install -r requirements.txt
 
-6. Run the API:
+4. **Run API server**(in first terminal):
    ```bash
    uvicorn app.main:app --reload
 
-5. Use CLI:
+5. **Use CLI**(in second terminal):
    ```bash
    python app/cli.py
+
+6. **Alternative testing with curl**:
+   ```bash
+   # Complete response
+   curl -X POST http://localhost:8000/generate \
+      -H "Content-Type: application/json" \
+      -d '{"prompt":"Hello"}'
+   
+   # Stream response
+   curl -X POST http://localhost:8000/stream-generate \
+      -H "Content-Type: application/json" \
+      -d '{"prompt":"Hello"}' \
+      --no-buffer
+   
+---
+
+## 🔧 Tradeoffs & Design Choices
+
+- Model Selection:
+     - Used DistilGPT2 (smaller/faster) instead of larger models
+     - Tradeoff: Less creative output vs. full GPT-2
+- Streaming Implementation:
+     - POST method for RESTful compliance
+     - Tradeoff: More complex than GET but more secure
+- Logging:
+     - Simple JSONL format for readability
+     - Tradeoff: No rotation/compression (prioritized MVP)
+- Performance:
+     - Model loaded once at startup
+     - Tradeoff: Higher memory usage vs. on-demand loading
 
 ---
 
@@ -82,7 +111,7 @@ Designed to be fast, readable, and minimal.
 
 Add more models using Ollama or ggml.
 
-Improve logging with rotation.
+Improve logging with rotation/compression.
 
 Add unit tests for API routes and CLI.
 
