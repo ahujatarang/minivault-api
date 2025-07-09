@@ -39,6 +39,8 @@ minivault-api/
 ├── requirements.txt       # Dependencies
 └── README.md
 
+```
+```markdown
 **Note**: The `logs/log.jsonl` file will be automatically generated when you first run the API. 
 - Contains all prompt/response pairs in JSONL format
 - Created with proper permissions during runtime
