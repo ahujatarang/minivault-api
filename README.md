@@ -35,7 +35,7 @@ minivault-api/
 │   ├── logger.py          # Logging utility
 │   └── cli.py             # Command-line interface
 ├── logs/
-│   └── gitkeep # Placeholder (log.jsonl auto-created at runtime)
+│   └── gitkeep            # Placeholder (log.jsonl auto-created at runtime)
 ├── requirements.txt       # Dependencies
 └── README.md
 ```
@@ -43,7 +43,7 @@ minivault-api/
 **Note**: The `logs/log.jsonl` file will be automatically generated when you first run the API, containing all prompt/response pairs in JSONL format.
 Sample entry format:
 ```json
-{"timestamp":"2023-07-16T12:00:00", "prompt":"Hello", "response":"Hello! Welcome to ModelVault's API simulation. How can I assist you today?"}
+{"timestamp": "2025-07-09T11:13:25.169206", "prompt": "Hello", "response": "Hello! Welcome to ModelVault's API simulation. How can I assist you today?"}
 ```   
 ---
 
@@ -63,7 +63,7 @@ Sample entry format:
    ```bash
    pip install -r requirements.txt
 
-4. **Run API server**(in first terminal):
+4. **Run API server**:
    ```bash
    uvicorn app.main:app --reload
 
@@ -105,19 +105,15 @@ Sample entry format:
 
 ## 📌 Notes
 
-Uses distilgpt2 model from HuggingFace.
-
-All runs are offline — no cloud APIs used.
-
-Designed to be fast, readable, and minimal.
+- Uses DistilGPT2 model from HuggingFace.
+- All runs are offline — no cloud APIs used.
+- Designed to be fast, readable, and minimal.
 
 ---
 
 ## 🧪 Future Improvements
 
-Add more models using Ollama or ggml.
-
-Improve logging with rotation/compression.
-
-Add unit tests for API routes and CLI.
+- Add more models using Ollama or ggml.
+- Improve logging with rotation/compression.
+- Add unit tests for API routes and CLI.
 
