@@ -67,7 +67,7 @@ Sample entry format:
    ```bash
    uvicorn app.main:app --reload
 
-5. **Use CLI**(in second terminal):
+5. **Use CLI**(in another terminal):
    ```bash
    python app/cli.py
 
