@@ -35,16 +35,16 @@ minivault-api/
 │   ├── logger.py          # Logging utility
 │   └── cli.py             # Command-line interface
 ├── logs/
-│   └── gitkeep            # Placeholder (log.jsonl auto-created at runtime)
+│   └── log.jsonl          # Auto-created at runtime
+├── screenshots            # Sample outputs
 ├── requirements.txt       # Dependencies
 └── README.md
 ```
 
-**Note**: The `logs/log.jsonl` file will be automatically generated when you first run the API, containing all prompt/response pairs in JSONL format.
-Sample entry format:
-```json
-{"timestamp": "2025-07-09T11:13:25.169206", "prompt": "Hello", "response": "Hello! Welcome to ModelVault's API simulation. How can I assist you today?"}
-```   
+**Note**: 
+- The `logs/log.jsonl` file will be automatically generated when you first run the API. It records all prompt/response interactions in structured JSONL format. A sample log file has been uploaded [here](logs/log.jsonl) for reference.
+- Sample outputs (Swagger UI, CLI, cURL) are available in the [`screenshots/`](./screenshots) folder.
+
 ---
 
 ## 🏁 Setup Instructions
@@ -96,7 +96,7 @@ Sample entry format:
      - Tradeoff: More complex than GET but more secure
 - Logging:
      - Simple JSONL format for readability
-     - Tradeoff: No rotation/compression (prioritized MVP)
+     - Tradeoff: No compression or remote log aggregation
 - Performance:
      - Model loaded once at startup
      - Tradeoff: Higher memory usage vs. on-demand loading
@@ -114,6 +114,6 @@ Sample entry format:
 ## 🧪 Future Improvements
 
 - Add more models using Ollama or ggml.
-- Improve logging with rotation/compression.
+- Improve logging with compression or remote log aggregation.
 - Add unit tests for API routes and CLI.
 
