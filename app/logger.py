@@ -2,8 +2,9 @@
 logger.py – Structured JSON logging for MiniVault API.
 Provides:
 - A custom JSONFormatter to log prompt-response pairs in JSONL format
-- Rotating file handler to manage logs in logs/log.jsonlimport logging
+- Rotating file handler to manage logs in logs/log.jsonl
 """
+import logging
 from logging.handlers import RotatingFileHandler
 import json
 from pathlib import Path
